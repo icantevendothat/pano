@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>The PANO Machine</h1>
+        <div class="intro">
+            <img class="machine" src="panomachine.png" alt="An image of The Pano Machine">
+            <p>The PANO machine is a small box, intended for big impact. The machine consists of 3 main components, the PANO card, the NFC reader/writer, and the touch screen. On the touchscreen, two options. “OMNY” and “PANO”. First time users hit the “OMNY” button, and scan their OMNY card on the NFC sensor to the right. The machine then scrapes the card’s UID, a unique identifier utilized by the OMNY system to check if the user holds a valid card. Then, the user presses down on a knob that dispenses them a PANO card. They then hit the “PANO” button on the screen and tap the PANO card on the NFC sensor. Their card now has a new UID, one left behind by another user, so that their tracked data is no longer linked to them as an individual. In this way, the data is scrambled and anonymized between all PANO users, emphasizing the idea of strength in numbers and digital autonomy. With the burgeoning use of Cubic OMNY cards, the new fare collection system in the city, customers are relinquishing an unprecedented amount of data to the same companies that surveil citizens for ICE, have faced regulatory scrutiny for mishandling sensitive data, and have been criticized for providing surveillance technology to law enforcement. Cubic, a defense firm, and parent company of OMNY, was recently taken private by Veritas Capital and Evergreen Coast Capital, raising concerns about private interests and public data. Soon, there is no escaping this concern, as the MTA plans to pivot fully to OMNY by 2025. On their company privacy policy, they disclose every type of information they track about users, with rather vague explanations about why they need these data points. For instance, geolocation. If the MTA is a flat-rate system, why is it necessary to see when and where users tapped in and out of the system? The PANO machine aims to answer this question succinctly: it’s not necessary.</p>
+        </div>
+        <h1>PANO's Role in the System</h1>
+        <img src="diagram.png" alt="A diagram of the PANO system and all its surrounding systems.">
+    <div class="gallery">
+        <img class="modal-trigger" src="panocard.png" alt="An alternative transit card with the word 'PANO' on it.">
+        <img class="modal-trigger" src="subway1.png" alt="Guerilla subway advertisements about OMNY">
+        <img class="modal-trigger" src="subway2.png" alt="Guerilla subway advertisements about OMNY">
+        <img class="modal-trigger" src="subway3.png" alt="Guerilla subway advertisements about OMNY">
+        <img class="modal-trigger" src="subway4.png" alt="Guerilla subway advertisements about OMNY">
+    </div>
+    <h1>Further Reading</h1>
+        <div class="links">
+            <a href="https://pestakeholder.org/news/new-report-highlights-private-equity-firm-veritas-capitals-role-in-surveillance-of-immigrants/">Surveiling Citizens for ICE</a>
+            <a href="https://casetext.com/case/cubic-corp-v-insurance-co-of-north-america">Scrutiny for Mishandling Sensitive Data</a>
+            <a href="https://theintercept.com/2022/10/03/cubic-military-public-transit-mta-omny/">Providing Surveillance Technology to Law Enforcement</a>
+            <a href="https://www.404media.co/i-tracked-nyc-subway-rider-home-omny-mta/">Harmful Data Practices</a>
+            <a href="https://www.rnz.co.nz/news/national/477400/us-firm-contracted-for-national-transport-ticketing-system-involved-in-weapons-manufacturing">Weapons Manufacturing</a>
+        </div>
+    </div>
+    <h1 class="container"><a href="https://annikas.xyz/">More Projects</a></h1>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div id="caption" class="caption"></div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImg");
+        var images = document.getElementsByClassName("modal-trigger");
+        var slideIndex = 0;
+
+        function openModal(index) {
+            modal.style.display = "block";
+            modalImg.src = images[index].src;
+            slideIndex = index;
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            if (n >= images.length) {
+                slideIndex = 0;
+            } else if (n < 0) {
+                slideIndex = images.length - 1;
+            }
+            modalImg.src = images[slideIndex].src;
+        }
+
+        for (var i = 0; i < images.length; i++) {
+            images[i].addEventListener("click", function() {
+                openModal(Array.prototype.indexOf.call(images, this));
+            });
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (modal.style.display === "block") {
+                if (event.key === "ArrowLeft") {
+                    plusSlides(-1);
+                } else if (event.key === "ArrowRight") {
+                    plusSlides(1);
+                } else if (event.key === "Escape") {
+                    closeModal();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
