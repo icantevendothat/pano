@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'PanoRegular';
-    src: url('pano-regular.ttf') format('truetype');
+    src: url('Pano-Regular.ttf') format('truetype');
 }
 @font-face {
     font-family: 'OmnyRegular';
-    src: url('omny-regular.ttf') format('truetype');
+    src: url('Omny-Regular.ttf') format('truetype');
 }
 
 body {
